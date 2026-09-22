@@ -2,6 +2,12 @@ import logging,shutil
 import re
 import threading
 import sys
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 import torch
 from flask import Flask, request, render_template, jsonify, send_from_directory,Response
 import os
